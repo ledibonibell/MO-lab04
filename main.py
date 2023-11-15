@@ -177,8 +177,8 @@ print("\nВ папке проекта лежит график lab02.png")
 x = matrix_big[:, selected_columns[0]]
 y = matrix_big[:, selected_columns[1]]
 
-max_x_coord = x[np.argmax(matrix_big[:, selected_columns[0]])]
-max_y_coord = y[np.argmax(matrix_big[:, selected_columns[1]])]
+max_x_coord = 10
+max_y_coord = 10
 
 colors = ['red', 'green', 'blue', 'purple']
 materials = ['Береза', 'Сосна', 'Дуб', 'Лиственница']
@@ -195,8 +195,8 @@ plt.scatter(max_x_coord, max_y_coord, color='black', marker='o', label='Точк
 
 plt.grid(True)
 
-plt.xlabel(f'Критерий №{selected_columns[0]}')
-plt.ylabel(f'Критерий №{selected_columns[1]}')
+plt.xlabel("Обработка")
+plt.ylabel("Долговечность")
 plt.title('Критерий Парето')
 plt.legend()
 
@@ -269,6 +269,8 @@ print("\nЧетыре промежуточные матрицы нормиров
 for i, new_matrix in enumerate(result_new_matrix):
     print(f"\nМатрица {i + 1}:")
     print(new_matrix)
+    print("\nСогласованность:")
+    print((np.sum(normalized_matrix*(np.sum(new_matrix, axis=0))) - 4)/2.7)
     print("\nСумма строк этой матрицы")
     print(sum_rows(new_matrix))
     print("\nНормальная матрица суммы:")
@@ -279,6 +281,9 @@ print(new_normalized_matrix)
 
 print("\nПромежуточная матрица нормирования:")
 print(result_matrix)
+
+print("\nСогласованность:")
+print((np.sum(normalized_matrix*(np.sum(result_matrix, axis=0))) - 4)/2.7)
 
 print("\nНормированная матрица другим способом:")
 print(normalize_matrix(sum_rows(result_matrix)))
